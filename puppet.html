@@ -1,0 +1,100 @@
+<html>
+
+<head>
+<title>HTML5 Canvas &mdash; Demo scenegraph</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+<script type="text/javascript" src="lib/dat.gui.js"></script>
+<script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+
+
+<style>
+    canvas {
+        border: solid 1px black
+    }
+    
+    img {
+        display: none;
+    }
+</style>
+</head>
+
+<script type="module">
+    import {PuppetController} from "./js/controllers/puppet_controller.js";
+    import {IronManPuppetBuilder} from "./js/ironman_puppet_builder.js";
+    import {Director} from "./js/director.js";
+    import {Settings} from "./js/config.js";
+
+    const director = new Director();
+    var builder = new IronManPuppetBuilder();;
+    var controller; 
+
+    $(document).ready(function(event){
+
+        director.createPuppet(builder);
+
+        controller = new PuppetController($("#canvas"), builder.getPuppet());
+
+        controller.updateView();
+    });
+
+    $("#iron_man").on('click', event => {
+        updateBuilder(new IronManPuppetBuilder());
+    });
+
+    $("#debug").on('click', event => {
+        Settings.DEBUG = !Settings.DEBUG;
+        controller.updateView();
+    });
+
+
+    function updateBuilder(builder) {
+        director.createPuppet(builder);
+        controller.setPuppet(builder.getPuppet());
+        controller.updateView();
+    }
+</script>
+
+<body>
+    <h2>Scenegraph</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <canvas id="canvas" width="600" height="700"></canvas>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Canvas</td>
+            </tr>
+
+            <tr>
+                <td><button id="debug">Debug Mode</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="iron_man">Iron Man</button></td>
+            </tr>
+            <tr>
+                <td><button id="hulk">Hulk</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <img id="torso" src="assets/puppet/body.png">
+    <img id="rightArm" src="assets/puppet/right_arm.png">
+    <img id="leftArm" src="assets/puppet/left_arm.png">
+    <img id="rightForeArm" src="assets/puppet/right_forearm.png">
+    <img id="leftForeArm" src="assets/puppet/left_forearm.png">
+    <img id="rightHand" src="assets/puppet/right_hand.png">
+    <img id="leftHand" src="assets/puppet/left_hand.png">
+    <img id="rightUpperLeg" src="assets/puppet/right_upper_leg.png">
+    <img id="leftUpperLeg" src="assets/puppet/left_upper_leg.png">
+    <img id="rightLowerLeg" src="assets/puppet/right_lower_leg.png">
+    <img id="leftLowerLeg" src="assets/puppet/left_lower_leg.png">
+    <img id="rightFoot" src="assets/puppet/right_foot.png">
+    <img id="leftFoot" src="assets/puppet/left_foot.png">
+    
+</body>
+</html>   
