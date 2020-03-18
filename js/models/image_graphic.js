@@ -22,14 +22,9 @@ export class ImageGraphic extends Graphic {
      * @param {Number} imgY 			- The y coordinate to place image.
      * @param {Boolean} display     	- Is the image visible or not.
      */
-	constructor(image, name, x, y, imgX, imgY, display=true) {
+	constructor(image, name, x, y, display=true) {
 		super(x, y, name);
-
 		this.image = image;
-		
-		this.imgX = imgX;
-		this.imgY = imgY;
-
 		this.display = display;
 	}
 

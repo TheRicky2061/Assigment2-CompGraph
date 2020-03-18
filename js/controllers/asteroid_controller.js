@@ -12,17 +12,17 @@ import {SpaceShip} from "../models/spaceship.js";
 import {Asteroid} from "../models/asteroid.js";
 import {TextGraphic} from "../models/text_graphic.js";
 
-/* @const {Number}  - Maximum number of asteroids that can be displayed, */
-const MAXIMUM_ASTEROIDS_ON_SCREEN = 3;
-
-/* @const {Number}  - Delay between spaceship shots. */
-const RELOAD_DELAY = 2 * 1000;	// 2 seconds
-
 /**
  * Controller for the Asteroids game.
  * @extends AnimationController
  */
 export class AsteroidController extends AnimationController {
+
+	/* @const {Number}  - Maximum number of asteroids that can be displayed, */
+	static MAXIMUM_ASTEROIDS_ON_SCREEN = 3;
+
+	/* @const {Number}  - Delay between spaceship shots. */
+	static RELOAD_DELAY = 2 * 1000;	// 2 seconds
 
 	/**
      * Create an asteroid controller.
@@ -44,6 +44,25 @@ export class AsteroidController extends AnimationController {
 		super(models, new AsteroidView(canvas));
 
 		this.lastBulletFired = 0;
+	}
+
+	/**
+	 * Set the amount of time it takes the ship to reload.
+	 * @param {Number} delay  - the delay to set.
+	 * @return {undefined}
+	 */
+	setReloadDelay(delay) {
+		AsteroidController.RELOAD_DELAY = delay * 1000;
+		this.lastBulletFired = 0;
+	}
+
+	/**
+	 * Set the maximum asteroids that can appear.
+	 * @param {Number} maximum  - maximum asteroids on screen.
+	 * @return {undefined}
+	 */
+	setMaximumAsteroids(maximum) {
+		AsteroidController.MAXIMUM_ASTEROIDS_ON_SCREEN = maximum;
 	}
 
 	/**
@@ -104,7 +123,7 @@ export class AsteroidController extends AnimationController {
 
 		this.models.spaceship.update();
 
-		if((new Date().getTime() - this.lastBulletFired) >= RELOAD_DELAY) {
+		if((new Date().getTime() - this.lastBulletFired) >= AsteroidController.RELOAD_DELAY) {
 			this.models.spaceship.gunReady = true;
 			this.models.status.text = "Gun Ready";
 		}
@@ -120,8 +139,11 @@ export class AsteroidController extends AnimationController {
 	 */
 	updateAsteroids() {
 
-		if(this.models.asteroids.length < MAXIMUM_ASTEROIDS_ON_SCREEN) {
+		if(this.models.asteroids.length < AsteroidController.MAXIMUM_ASTEROIDS_ON_SCREEN) {
 			this.models.asteroids.push(new Asteroid());
+		} else {
+			while(this.models.asteroids.length > AsteroidController.MAXIMUM_ASTEROIDS_ON_SCREEN)
+				this.models.asteroids.pop();
 		}
 
 		for(const asteroid of Object.values(this.models.asteroids)) {

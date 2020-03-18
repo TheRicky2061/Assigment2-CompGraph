@@ -4,6 +4,7 @@
  */
 
 import {MoveableImageGraphic} from "./moveable_graphic.js";
+import {Image} from "../image.js";
 
 const BULLET_VELOCITY = 50;
 
@@ -20,8 +21,15 @@ export class Bullet extends MoveableImageGraphic {
      * @param {String} angle - the angle of the graphic.
      */
 	constructor(x, y, angle) {
-		super($("#bullet").get(0), "bullet", x, y, -20, -40);
-		this.vx = Math.cos(angle - Math.PI/2) * BULLET_VELOCITY;
-		this.vy = Math.sin(angle - Math.PI/2) * BULLET_VELOCITY;
+		let image = new Image($("#bullet").get(0), -20, -40);
+		
+		let vx = Math.cos(angle - Math.PI/2) * BULLET_VELOCITY;
+		let vy = Math.sin(angle - Math.PI/2) * BULLET_VELOCITY;
+
+		super(image, "bullet", x, y);
+
+		this.setVelocity(vx, vy);
+
+		
 	}
 }

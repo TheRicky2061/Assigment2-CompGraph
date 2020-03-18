@@ -19,21 +19,6 @@ export class MoveableImageGraphic extends ImageGraphic {
 	/*@static {Number} MAX_HEIGHT  - Maximum Viewable area in the y direction */
     static MAX_HEIGHT = 0;
 
-    /**
-	 * Calculates the distance between tow graphics
-	 * @param {Graphic} object1  - the first graphic.
-	 * @param {Graphic} object1  - the second graphic.
-	 */
-	static distance(object1, object2) {
-
-		let verticalDistance = Math.pow(object1.x - object2.x, 2);
-		let horizontalDistance = Math.pow(object1.y - object2.y, 2)
-
-		let distance = Math.sqrt( verticalDistance + horizontalDistance );
-
-		return distance;
-	}
-
 	/**
      * Create an image graphic.
      * @param {HTMLImageElement} image 	- The image to display.
@@ -44,11 +29,22 @@ export class MoveableImageGraphic extends ImageGraphic {
      * @param {Number} imgY 			- The y coordinate to place image.
      * @param {Boolean} display     	- Is the image visible or not.
      */
-	constructor(image, name, x, y, imgX, imgY, vx=0, vy=0, display=true) {
-		super(image, name, x, y, imgX, imgY, display);
-		this.radius = image.height*0.40;
+	constructor(image, name, x, y, vx=0, vy=0, av=0, display=true) {
+		super(image, name, x, y, display);
+
+		this.radius = image.element.height*0.40;
 		this.vx = vx;
 		this.vy = vy;
+		this.av = av;
+	}
+
+	setVelocity(vx, vy) {
+		this.vx = vx;
+		this.vy = vy;
+	}
+
+	setAngularVelocity(av) {
+		this.av = av;
 	}
 
 	/**
@@ -104,5 +100,20 @@ export class MoveableImageGraphic extends ImageGraphic {
 		if(this.y >= MoveableImageGraphic.MAX_HEIGHT) return true;
 
 		return false;
+	}
+
+	/**
+	 * Calculates the distance between tow graphics
+	 * @param {Graphic} object1  - the first graphic.
+	 * @param {Graphic} object1  - the second graphic.
+	 */
+	static distance(object1, object2) {
+
+		let verticalDistance = Math.pow(object1.x - object2.x, 2);
+		let horizontalDistance = Math.pow(object1.y - object2.y, 2)
+
+		let distance = Math.sqrt( verticalDistance + horizontalDistance );
+
+		return distance;
 	}
 }

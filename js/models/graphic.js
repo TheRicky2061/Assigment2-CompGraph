@@ -26,6 +26,25 @@ export class Graphic {
 		this.children = {};
 	}
 
+	/**
+     * Sets the graphic's scaling
+     * @param {Number} x  - The scalar factor for x.
+     * @param {Number} y  - The scalar factor for y.
+     * @return {undefined}
+     */
+	setScale(sx, sy) {
+		this.sx = sx;
+		this.sy = sy;
+	}
+
+	/**
+     * Sets the graphic's angle
+     * @param {Float} angle  - The new angle.
+     * @return {undefined}
+     */
+	setAngle(angle) {
+		this.angle = angle;
+	}
 	 /**
      * Inserts a child graphic to the list of children graphics.
      * @param {Graphic} child 				- The child graphic to add.

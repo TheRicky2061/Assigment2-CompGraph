@@ -17,10 +17,12 @@
 <script type="module">
     import {AsteroidController} from "./js/controllers/asteroid_controller.js";
     import {Settings} from "./js/config.js";
+
+    let controller;
     
 
     $(document).ready(event => {
-        let controller = new AsteroidController($("#canvas"));
+        controller = new AsteroidController($("#canvas"));
         controller.updateView();
     });
 
@@ -28,27 +30,41 @@
         Settings.DEBUG = !Settings.DEBUG;
     })
 
+    $("#asteroidCount").change(event => {
+        controller.setMaximumAsteroids(event.target.value);
+    })
+
+    $("#reloadDelay").change(event => {
+        controller.setReloadDelay(event.target.value);
+    });
+
 </script>
 
 <body>
     <h2>Asteroid</h2>
     <table>
         <tbody>
-    <tr>
-        <td><canvas id="canvas" width="600" height="600"></canvas></td>
-        <td>Description</td>
-    </tr>
+        <tr>
+            <td><canvas id="canvas" width="600" height="600"></canvas></td>
+            <td>Description</td>
+        </tr>
 
-    <tr>
-        <td>Canvas</td>
-        <td></td>
-    </tr>
-    <tr>
-    <td><small><span id="text"></span></small></td>
-    </tr>
-    </tbody></table>
+        <tr>
+            <td>Canvas</td>
+            <td></td>
+        </tr>
+
+        </tbody>
+    </table>
+
     <button id="debug">Debug Mode</button>
-    </td>
+    <label for="asteroidCount">Number of asteroids:</label>
+    <input type="number" id="asteroidCount" value="3">
+
+    <label for="reloadDelay">Reload Delay (in seconds):</label>
+    <input type="number" id="reloadDelay" value="2">
+    
+    
 
     <img id="spaceship" src="./assets/asteroid/spaceship.png">
     <img id="bullet" src="./assets/asteroid/bullet.png">

@@ -3,7 +3,7 @@
  * @module SpaceShip
  */
 
-
+import {Image} from "../image.js";
 import {TopologyImageGraphic} from "./topology_model.js";
 import {ImageGraphic} from "./image_graphic.js";
 import {Bullet} from "./bullet.js";
@@ -23,12 +23,11 @@ export class SpaceShip extends TopologyImageGraphic {
      * @param {Number} y  - The y coordinate.
      */
 	constructor(x, y) {
-		super($("#spaceship").get(0), "spaceship", x, y, -67, -75);
-		this.av = 0;
-		this.sx = 0.7;
-        this.sy = 0.7;
-        this.gunReady = true;
+		let image = new Image($("#spaceship").get(0), -67, -75);
 
+		super(image, "spaceship", x, y);
+		this.gunReady = true;
+		this.setScale(0.7, 0.7);
 		this.setEngines();
 	}
 
@@ -46,8 +45,11 @@ export class SpaceShip extends TopologyImageGraphic {
 	 * @return {undefined}
 	 */
 	setEngines() {
-		let engine1 = new ImageGraphic($("#engine").get(0), "engine1", -65, 10, -50, -100, false);
-		let engine2 = new ImageGraphic($("#engine").get(0), "engine2", 65, 10, -50, -100, false);
+		let engine1Image = new Image($("#engine").get(0), -50, -100);
+		let engine2Image = new Image($("#engine").get(0), -50, -100);
+
+		let engine1 = new ImageGraphic(engine1Image, "engine1", -65, 10, false);
+		let engine2 = new ImageGraphic(engine2Image, "engine2", 65, 10, false);
 
 		engine1.angle = engine2.angle = 180;
 		engine1.sx = engine2.sx = 0.4;

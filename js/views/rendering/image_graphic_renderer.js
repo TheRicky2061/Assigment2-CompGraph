@@ -28,7 +28,7 @@ export class ImageGraphicRenderer extends GraphicRenderer {
 		
 		if(this.graphic.display) {
 			super.render(context);
-			context.drawImage(this.graphic.image, this.graphic.imgX, this.graphic.imgY);
+			context.drawImage(this.graphic.image.element, this.graphic.image.x, this.graphic.image.y);
 		}
 	}
 }

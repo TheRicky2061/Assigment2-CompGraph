@@ -34,7 +34,7 @@ export class TopologyImageGraphicRenderer extends ImageGraphicRenderer {
 		
 		context.rotate(this.graphic.angle);
 		context.scale(this.graphic.sx, this.graphic.sy);
-		context.drawImage(this.graphic.image, this.graphic.imgX, this.graphic.imgY);	
+		context.drawImage(this.graphic.image.element, this.graphic.image.x, this.graphic.image.y);	
 	}
 
 	/**

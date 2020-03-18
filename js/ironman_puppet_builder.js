@@ -11,7 +11,7 @@
 import {PuppetBuilder} from "./puppet_builder.js";
 import {ImageGraphic} from "./models/image_graphic.js";
 import {Graphic} from "./models/graphic.js";
-
+import {Image} from "./image.js";
 
 
 /**
@@ -40,95 +40,132 @@ export class IronManPuppetBuilder extends PuppetBuilder {
 		);
 	}
 
-	setRightUpperLeg(image) {
+	setRightUpperLeg(imageElement) {
+
+		let image = new Image(imageElement, -50, -22);
 
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightUpperLeg", -22, 50, -50, -22),
+			new ImageGraphic(image, "rightUpperLeg", -22, 50),
 			"lowerBody"
 		);
 	}
 
-	setRightLowerLeg(image) {
+	setRightLowerLeg(imageElement) {
+
+		let image = new Image(imageElement, -45, -20);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightLowerLeg", -15, 105, -45, -20),
+			new ImageGraphic(image, "rightLowerLeg", -15, 105),
 			"rightUpperLeg"
 		);
 	}
 
-	setRightFoot(image) {
+	setRightFoot(imageElement) {
+
+		let image = new Image(imageElement, -30, -15);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightFoot", -7, 120, -30, -15),
+			new ImageGraphic(image, "rightFoot", -7, 120),
 			"rightLowerLeg"
 		);
 	}
 
-	setLeftUpperLeg(image) {
+	setLeftUpperLeg(imageElement) {
+
+		let image = new Image(imageElement, -25, -20);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftUpperLeg", 23, 46, -25, -20),
+			new ImageGraphic(image, "leftUpperLeg", 23, 46),
 			"lowerBody"
 		);
 	}
 
-	setTorso(image) {
+	setTorso(imageElement) {
+
+		let image = new Image(imageElement, -107, -300);
 
 		this.puppet.addChild(
-			new ImageGraphic(image, "torso", 0, 0, -107, -300),
+			new ImageGraphic(image, "torso", 0, 0),
 			"upperBody"
 		);
 	}
 
-	setRightArm(image) {
+	setRightArm(imageElement) {
+
+		let image = new Image(imageElement, -39, -30);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightArm", -100, -155, -39, -30),
+			new ImageGraphic(image, "rightArm", -100, -155),
 			"torso"
 		);
 	}
 
-	setRightForeArm(image) {
+	setRightForeArm(imageElement) {
+
+		let image = new Image(imageElement, -37, -20);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightForeArm", -15, 90, -37, -20),
+			new ImageGraphic(image, "rightForeArm", -15, 90),
 			"rightArm"
 		);
 	}
 
-	setRightHand(image) {
+	setRightHand(imageElement) {
+
+		let image = new Image(imageElement, -15, -15);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "rightHand", 5, 85, -15, -15),
+			new ImageGraphic(image, "rightHand", 5, 85),
 			"rightForeArm"
 		);
 	}
 
-	setLeftArm(image) {
+	setLeftArm(imageElement) {
+
+		let image = new Image(imageElement, -25, -30);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftArm", 90, -155, -25, -30),
+			new ImageGraphic(image, "leftArm", 90, -155),
 			"torso"
 		);
 	}
 
-	setLeftForeArm(image) {
+	setLeftForeArm(imageElement) {
+
+		let image = new Image(imageElement, -35, -15);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftForeArm", 15, 90, -35, -15),
+			new ImageGraphic(image, "leftForeArm", 15, 90),
 			"leftArm"
 		);
 	}
 
-	setLeftHand(image) {
+	setLeftHand(imageElement) {
+
+		let image = new Image(imageElement, -40, -15);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftHand", -5, 90, -40, -15),
+			new ImageGraphic(image, "leftHand", -5, 90),
 			"leftForeArm"
 		);
 	}
 
-	setLeftLowerLeg(image) {
+	setLeftLowerLeg(imageElement) {
+
+		let image = new Image(imageElement, -34, -15);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftLowerLeg", 10, 108, -34, -15),
+			new ImageGraphic(image, "leftLowerLeg", 10, 108),
 			"leftUpperLeg"
 		);
 	}
 
-	setLeftFoot(image) {
+	setLeftFoot(imageElement) {
+
+		let image = new Image(imageElement, -25, -12);
+
 		this.puppet.addChild(
-			new ImageGraphic(image, "leftFoot", 5, 120, -25, -12),
+			new ImageGraphic(image, "leftFoot", 5, 120),
 			"leftLowerLeg"
 		);
 	}
