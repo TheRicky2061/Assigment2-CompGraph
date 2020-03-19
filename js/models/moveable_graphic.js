@@ -25,8 +25,6 @@ export class MoveableImageGraphic extends ImageGraphic {
      * @param {String} name 			- the name of the graphic.
      * @param {Number} x 				- The x coordinate.
      * @param {Number} y 				- The y coordinate.
-     * @param {Number} imgX 			- The x coordinate to place image.
-     * @param {Number} imgY 			- The y coordinate to place image.
      * @param {Boolean} display     	- Is the image visible or not.
      */
 	constructor(image, name, x, y, vx=0, vy=0, av=0, display=true) {

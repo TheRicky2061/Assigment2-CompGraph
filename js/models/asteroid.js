@@ -21,7 +21,7 @@ export class Asteroid extends TopologyImageGraphic {
 		let y = Math.round(Math.random() * TopologyImageGraphic.MAX_HEIGHT/3);
 		let image = new Image($("#asteroid1").get(0), -55, -55);
 
-		super(image, null, x, y);
+		super(image, "asteroid", x, y);
 
 		let velocity = Math.floor((Math.random() * 5) + 1);
 		let angle = Math.round(Math.random() * 360) * Math.PI/180;

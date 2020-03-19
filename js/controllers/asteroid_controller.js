@@ -123,7 +123,7 @@ export class AsteroidController extends AnimationController {
 
 		this.models.spaceship.update();
 
-		if((new Date().getTime() - this.lastBulletFired) >= AsteroidController.RELOAD_DELAY) {
+		if(this.gunReadyToFire()) {
 			this.models.spaceship.gunReady = true;
 			this.models.status.text = "Gun Ready";
 		}
@@ -131,6 +131,14 @@ export class AsteroidController extends AnimationController {
 		if(this.models.spaceship.isOffScreen() && Settings.DEBUG) {
 			console.log("Spaceship offscreen");
 		}
+	}
+
+	/**
+	 * Verifies that the spaceship's gun can be fired.
+	 * @return {undefined}
+	 */
+	gunReadyToFire() {
+		return (new Date().getTime() - this.lastBulletFired) >= AsteroidController.RELOAD_DELAY;
 	}
 
 	/**
@@ -215,7 +223,7 @@ export class AsteroidController extends AnimationController {
 			this.models.bullet = this.models.spaceship.fire();
 			this.lastBulletFired = new Date().getTime();
 			this.models.spaceship.gunReady = false;
-			this.models.status.text = "Reloading";
+			this.models.status.text = "Reloading...";
 		}
 	}
 }

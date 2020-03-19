@@ -14,12 +14,10 @@ export class ImageGraphic extends Graphic {
 
 	/**
      * Create an image graphic.
-     * @param {HTMLImageElement} image 	- The image to display.
+     * @param {Image} image 			- The image to display.
      * @param {String} name 			- the name of the graphic.
      * @param {Number} x 				- The x coordinate.
      * @param {Number} y 				- The y coordinate.
-     * @param {Number} imgX 			- The x coordinate to place image.
-     * @param {Number} imgY 			- The y coordinate to place image.
      * @param {Boolean} display     	- Is the image visible or not.
      */
 	constructor(image, name, x, y, display=true) {

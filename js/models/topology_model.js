@@ -19,8 +19,8 @@ export class TopologyImageGraphic extends MoveableImageGraphic {
      * @param {String} name             - the name of the graphic.
      * @param {Number} x                - The x coordinate.
      * @param {Number} y                - The y coordinate.
-     * @param {Number} imgX             - The x coordinate to place image.
-     * @param {Number} imgY             - The y coordinate to place image.
+     * @param {Number} vx               - Velocity in the x direction.
+     * @param {Number} vy               - Velocity in the y direction.
      */
 	constructor(image, name, x, y, vx=0, vy=0, display=true) {
 		super(image, name, x, y, vx, vy, display);
