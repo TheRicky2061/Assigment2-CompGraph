@@ -204,7 +204,7 @@ export class AsteroidController extends AnimationController {
 	}
 
 	/**
-	 * Destroys the given asteroid.
+	 * Removes the given asteroid from the list.
 	 * @return {undefined}
 	 */
 	destroyAsteroid(asteroid) {

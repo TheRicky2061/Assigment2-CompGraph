@@ -41,17 +41,54 @@
 </script>
 
 <body>
-    <h2>Asteroid</h2>
+    
     <table>
+        <thead>
+            <tr>
+                <td><h2>Asteroid</h2></td>
+                <td><h2>Description</h2></td>
+            </tr>
+        </thead>
         <tbody>
         <tr>
-            <td><canvas id="canvas" width="600" height="600"></canvas></td>
-            <td>Description</td>
+            <td>
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </td>
+
+            <td>
+                <h3>Part 1: <i>Animation and keyboard</i></h3>
+                <p>Spaceship controls:</p>
+                <ul>
+                    <li>W key: move ship forward</li>
+                    <li>S key: move ship backwards</li>
+                    <li>D key: rotate ship to the right</li>
+                    <li>A key: rotate ship to the left</li>
+                    <li>Space key: Shoot a bullet from the spaceship</li>
+                </ul>
+
+                <p>Restrictions:</p>
+                <ul>
+                    <li>Gun needs to reload for two seconds before it can fire again.</li>
+                    <li>When an asteroid is destroyed a new one takes its place in a random location.</li>
+                </ul>
+
+                <p>Extras:</p>
+                <ul>
+                    <li>View the angles and origin of the spaceship, bullet and asteroids by clicking on the "Debug Mode" button below the canvas.</li>
+
+                    <li>The spaceship and asteroids have a 2d topology, meaning that when they exit the viewable area from the left, right, up or down direction, they will reappear in the opposite side.</li>
+
+                    <li>Change the number of asteroids that appear on screnn by change the its input box</li>
+
+                    <li>Modify the Gun's reload delay</li>
+                </ul>
+
+                <a href="puppet.html">Puppet</a>
+            </td>        
         </tr>
 
         <tr>
             <td>Canvas</td>
-            <td></td>
         </tr>
 
         </tbody>

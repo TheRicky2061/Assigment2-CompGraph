@@ -6,7 +6,6 @@
 <script type="text/javascript" src="lib/dat.gui.js"></script>
 <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
 
-
 <style>
     canvas {
         border: solid 1px black
@@ -15,72 +14,40 @@
     img {
         display: none;
     }
+
 </style>
 </head>
 
-<script type="module">
-    import {PuppetController} from "./js/controllers/puppet_controller.js";
-    import {IronManPuppetBuilder} from "./js/ironman_puppet_builder.js";
-    import {Director} from "./js/director.js";
-    import {Settings} from "./js/config.js";
-
-    const director = new Director();
-    var builder = new IronManPuppetBuilder();;
-    var controller; 
-
-    $(document).ready(function(event){
-
-        director.createPuppet(builder);
-
-        controller = new PuppetController($("#canvas"), builder.getPuppet());
-
-        controller.updateView();
-    });
-
-    $("#iron_man").on('click', event => {
-        updateBuilder(new IronManPuppetBuilder());
-    });
-
-    $("#debug").on('click', event => {
-        Settings.DEBUG = !Settings.DEBUG;
-        controller.updateView();
-    });
-
-
-    function updateBuilder(builder) {
-        director.createPuppet(builder);
-        controller.setPuppet(builder.getPuppet());
-        controller.updateView();
-    }
-</script>
-
 <body>
-    <h2>Scenegraph</h2>
-
+    
     <table>
+        <thead>
+            <tr>
+                <td><h2>Puppet</h2></td>
+                <td><h2><i>Description</i></h2></td>
+            </tr>
+        </thead>
+
         <tbody>
             <tr>
                 <td>
                     <canvas id="canvas" width="600" height="700"></canvas>
                 </td>
-            </tr>
 
-            <tr>
-                <td>Canvas</td>
-            </tr>
+                <td style="position: absolute;">
+                    <h3>Part 2: <i>Transform Composition</i></h3>
 
-            <tr>
-                <td><button id="debug">Debug Mode</button></td>
-            </tr>
+                    <p>Using the GUI, modify the variables corresponding to each body part to move it from its current position. The variables control the position or the rotation at their hinge.</p>
 
-            <tr>
-                <td><button id="iron_man">Iron Man</button></td>
-            </tr>
-            <tr>
-                <td><button id="hulk">Hulk</button></td>
+                    <p>Click on the "Debug Mode" to see the origin and axis at each body part.</p>
+
+                    <a href="asteroid.html">Asteroids</a>
+                </td> 
             </tr>
         </tbody>
     </table>
+
+    <button id="debug">Debug Mode</button>
 
     <img id="torso" src="assets/puppet/body.png">
     <img id="rightArm" src="assets/puppet/right_arm.png">
@@ -95,6 +62,32 @@
     <img id="leftLowerLeg" src="assets/puppet/left_lower_leg.png">
     <img id="rightFoot" src="assets/puppet/right_foot.png">
     <img id="leftFoot" src="assets/puppet/left_foot.png">
+
+    <script type="module">
+        import {PuppetController} from "./js/controllers/puppet_controller.js";
+        import {IronManPuppetBuilder} from "./js/ironman_puppet_builder.js";
+        import {Director} from "./js/director.js";
+        import {Settings} from "./js/config.js";
+
+        const director = new Director();
+        var builder = new IronManPuppetBuilder();;
+        var controller; 
+
+        $(document).ready(function(event){
+
+            director.createPuppet(builder);
+
+            controller = new PuppetController($("#canvas"), builder.getPuppet());
+
+            controller.updateView();
+        });
+
+        $("#debug").on('click', event => {
+            Settings.DEBUG = !Settings.DEBUG;
+            controller.updateView();
+        });
+
+    </script>
     
 </body>
 </html>   
